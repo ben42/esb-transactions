@@ -64,11 +64,13 @@
     <!-- A ResourceManager is needed for every transactional resource in order to recover any outstanding transactions after 
         a crash. It will register with the Aries transaction manager, which then calls recoverResource() on the transactional resource 
         itself. -->
-    <bean id="resourceManager-AMQ" class="org.apache.activemq.pool.ActiveMQResourceManager" init-method="recoverResource">
+    <bean id="resourceManager-AMQ" class="org.apache.activemq.jms.pool.GenericResourceManager" init-method="recoverResource">
         <property name="transactionManager" ref="recoverableTxManager" />
         <!-- CF must be of type ActiveMQConnectionFactory, otherwise no recovery will occur -->
         <property name="connectionFactory" ref="AmqXaCF" />
         <property name="resourceName" value="activemq.default" />
+        <property name="userName" value="${xa-example.user}" />
+        <property name="password" value="${xa-example.password}" />
     </bean>
 
     <!-- Setting up the jta:// component with the entity manager factory that we set up in the 'database' bundle. -->
