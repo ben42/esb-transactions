@@ -28,7 +28,7 @@ public class TransactionalRouteBuilder extends SpringRouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("amq://Input.Flights?username=admin&password=admin")
+        from("amq://Input.Flights?username=" + System.getProperty("xa-example.user") + "&password=" + System.getProperty("xa-example.password"))
             .transacted()
             .log("Received JMS message ${body}")
             .process(new ConvertToJpaBeanProcessor())
