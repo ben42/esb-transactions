@@ -2,5 +2,6 @@ RULE Lets businesslogic throw an exception to force a xa abort
 CLASS org.fusesource.example.transactions.routes.ConvertToJpaBeanProcessor
 METHOD process
 AT ENTRY
-DO traceln("Throwing RuntimeException"), delay(1000), throw new java.lang.RuntimeException()
+IF TRUE
+DO traceln("Throwing RuntimeException"),delay(1000),throw new java.lang.RuntimeException()
 ENDRULE
