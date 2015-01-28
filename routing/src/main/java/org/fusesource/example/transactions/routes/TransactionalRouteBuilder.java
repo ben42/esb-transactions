@@ -15,14 +15,7 @@
  */
 package org.fusesource.example.transactions.routes;
 
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.apache.camel.spring.SpringRouteBuilder;
-import org.fusesource.example.transactions.database.Flight;
-
-import java.util.Random;
-
-import static org.fusesource.example.transactions.routes.Airports.randomAirport;
 
 /**
  * Camel route builder defining our transactional route.  Because we want to maximize the level of support Spring offers for transactions,
@@ -41,24 +34,5 @@ public class TransactionalRouteBuilder extends SpringRouteBuilder {
             .process(new ConvertToJpaBeanProcessor())
             .log("Storing ${body} in the database")
             .to("jpa://org.fusesource.example.transactions.database.Flight");
-    }
-
-    /*
-     * Just a simple Camel processor to transform a plain text message into a Flight object.
-     */
-    private class ConvertToJpaBeanProcessor implements Processor {
-
-        public void process(Exchange exchange) throws Exception {
-            exchange.getOut().copyFrom(exchange.getIn());
-
-            String number = exchange.getIn().getBody(String.class);
-
-            Flight flight = new Flight();
-            flight.setNumber(number);
-            flight.setDeparture(randomAirport());
-            flight.setArrival(randomAirport());
-
-            exchange.getOut().setBody(flight);
-        }
     }
 }

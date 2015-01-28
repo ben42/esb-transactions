@@ -1,0 +1,8 @@
+RULE Lets JBoss Fuse and A-MQ crash during 2nd Phase of a 2PC
+CLASS org.apache.activemq.transaction.XATransaction
+METHOD storeCommit
+AT ENTRY
+# check if second phase of 2PC
+IF $2
+DO traceln("Killing VM during 2nd phase of 2PC"), delay(1000), killJVM()
+ENDRULE
