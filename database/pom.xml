@@ -63,6 +63,7 @@
           <instructions>
             <Export-Package>org.fusesource.example.transactions.database</Export-Package>
             <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
+            <Embed-Dependency>*;scope=compile|runtime;inline=true;artifactId=*</Embed-Dependency>
           </instructions>
         </configuration>
       </plugin>
