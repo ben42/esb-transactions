@@ -1,67 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Copyright (c) Red Hat, Inc.
+<!-- Copyright (c) Red Hat, Inc. Red Hat licenses this file to you under the Apache License, version 2.0 (the "License"); 
+    you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+    Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS 
+    IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language 
+    governing permissions and limitations under the License. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>transactions</artifactId>
+        <groupId>org.fusesource.example</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-  Red Hat licenses this file to you under the Apache License, version
-  2.0 (the "License"); you may not use this file except in compliance
-  with the License.  You may obtain a copy of the License at
+    <modelVersion>4.0.0</modelVersion>
 
-     http://www.apache.org/licenses/LICENSE-2.0
+    <groupId>org.fusesource.example.transactions</groupId>
+    <artifactId>routing</artifactId>
+    <packaging>bundle</packaging>
 
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-  implied.  See the License for the specific language governing
-  permissions and limitations under the License.
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <artifactId>transactions</artifactId>
-    <groupId>org.fusesource.example</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+    <name>Fuse By Example :: Transactions :: Routing</name>
 
-  <modelVersion>4.0.0</modelVersion>
+    <dependencies>
+        <dependency>
+            <groupId>org.fusesource.example.transactions</groupId>
+            <artifactId>database</artifactId>
+        </dependency>
 
-  <groupId>org.fusesource.example.transactions</groupId>
-  <artifactId>routing</artifactId>
-  <packaging>bundle</packaging>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+        </dependency>
 
-  <name>Fuse By Example :: Transactions :: Routing</name>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-camel</artifactId>
+        </dependency>
+    </dependencies>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.fusesource.example.transactions</groupId>
-      <artifactId>database</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-core</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.activemq</groupId>
-      <artifactId>activemq-camel</artifactId>
-    </dependency>
-  </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <configuration>
-          <instructions>
-            <Private-Package>org.fusesource.example.transactions.routes</Private-Package>
-<!--             <Embed-Dependency>*;scope=compile|runtime;inline=true;artifactId=*</Embed-Dependency> -->
-          </instructions>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Private-Package>org.fusesource.example.transactions.routes</Private-Package>
+<!--                         <Embed-Dependency>*;scope=compile|runtime;inline=true;artifactId=com.ibm.websphere.jtaextensions|org.fusesource.example.transactions.database|geronimo-jpa_2.0_spec|camel-jpa|database|openjpa</Embed-Dependency> -->
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
