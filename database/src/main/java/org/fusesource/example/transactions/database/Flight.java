@@ -32,7 +32,7 @@ public class Flight {
     private String arrival;
 
     @Id
-    @Column(length = 12)
+    @Column(length = 20)
     public String getNumber() {
         return number;
     }
