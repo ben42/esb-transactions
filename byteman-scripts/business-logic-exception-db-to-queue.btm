@@ -1,0 +1,7 @@
+RULE Lets businesslogic throw an exception to force a xa abort for db to queue
+CLASS org.fusesource.example.transactions.routes.ConvertToMessageBeanProcessor
+METHOD process
+AT ENTRY
+IF TRUE
+DO traceln("Throwing RuntimeException"),delay(1000),throw new java.lang.RuntimeException()
+ENDRULE
