@@ -45,7 +45,6 @@
                 <configuration>
                     <instructions>
                         <Private-Package>org.fusesource.example.transactions.routes</Private-Package>
-                        <Embed-Dependency>*;scope=compile|runtime;inline=true;artifactId=database|geronimo-jpa_2.0_spec|camel-jpa</Embed-Dependency>
                     </instructions>
                 </configuration>
             </plugin>
