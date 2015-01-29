@@ -27,40 +27,30 @@ import javax.persistence.*;
 @Table(name = "FLIGHTS")
 public class Flight {
 
-    private String number;
-    private String departure;
-    private String arrival;
+    private String id;
+    private String text;
 
     @Id
-    @Column(length = 20)
-    public String getNumber() {
-        return number;
+    @Column(length = 200)
+    public String getId() {
+        return id;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    @Column(length = 3)
-    public String getDeparture() {
-        return departure;
+    @Column(length = 30)
+    public String getText() {
+        return text;
     }
 
-    public void setDeparture(String departure) {
-        this.departure = departure;
+    public void setText(String text) {
+        this.text = text;
     }
-
-    @Column(length = 3)
-    public String getArrival() {
-        return arrival;
-    }
-
-    public void setArrival(String arrival) {
-        this.arrival = arrival;
-    }
-
+    
     @Override
     public String toString() {
-        return String.format("[flight %s from %s to %s]", number, departure, arrival);
+        return String.format("[message %s with id %s]", id, text);
     }
 }

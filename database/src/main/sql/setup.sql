@@ -18,8 +18,7 @@
 -- DDL for the flights table that corresponds to our Flight entity class
 --
 CREATE TABLE flights (
-    number VARCHAR(12) NOT NULL,
-    departure VARCHAR(3),
-    arrival VARCHAR(3),
-    PRIMARY KEY (number)
+    id VARCHAR(200) NOT NULL,
+    text VARCHAR(30),
+    PRIMARY KEY (id)
 );
