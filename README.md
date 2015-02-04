@@ -54,11 +54,10 @@ In the shell, run these two commands:
 
     ij> connect 'jdbc:derby://localhost:1527/transactions;create=true';
     ij> CREATE TABLE flights (
-          number VARCHAR(12) NOT NULL,
-          departure VARCHAR(3),
-          arrival VARCHAR(3),
-          PRIMARY KEY (number)
-        );
+    id VARCHAR(200) NOT NULL,
+    text VARCHAR(30),
+    PRIMARY KEY (id)
+    );
 
 To be sure the tables got created successfully, run one more command:
 
