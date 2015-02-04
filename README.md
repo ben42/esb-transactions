@@ -115,6 +115,22 @@ The ESB log file will contain logging output similar to :
 2013-03-13 12:33:28,958 | INFO| r[Input.Flights] | route1 | ? ? | 130 - org.apache.camel.camel-core - 2.10.0.redhat-60015 | Storing [flight TXL-1000 from DEN to LAS] in the database
 
 
+### Sending a message back from the database to the queue
+
+    ij> insert into flights values ('1','poison');
+
+### Byteman setup
+In order to crash the JVM in the commit phase the following prerequisites must be fulfilled
+* Add org.jboss.byteman.rule,org.jboss.byteman.rule.exception to FUSE_HOME/etc/config.properties
+* run ./bminstall.sh `pgrep -f karaf`
+
+
+#### Let Byteman crash the JVM
+
+  ./bmsubmit.sh byteman-scripts/fuse-xa-crash.btm
+
+ 
+
 ### Verifying the result
 Now, head back to `ij` and run this SQL query:
 
