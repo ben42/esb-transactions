@@ -1,7 +1,8 @@
-RULE Lets businesslogic throw an exception to force a xa abort for db to queue
+RULE Lets businesslogic throw an exception to force a xa abort for db to queue  whenever a message contains the word poison
 CLASS org.fusesource.example.transactions.routes.ConvertToMessageBeanProcessor
-METHOD process
+METHOD process(Exchange)
 AT ENTRY
-IF TRUE
-DO traceln("Throwing RuntimeException"),delay(1000),throw new java.lang.RuntimeException()
+BIND flight : org.fusesource.example.transactions.database.Flight = $exchange.getIn().getBody(org.fusesource.example.transactions.database.Flight.class)
+IF flight.getText().contains("poison")
+DO traceln("Throwing RuntimeException"),throw new java.lang.RuntimeException("Poisonous message received!")
 ENDRULE
