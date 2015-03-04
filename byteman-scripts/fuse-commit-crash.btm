@@ -1,0 +1,7 @@
+RULE Lets JBoss Fuse and A-MQ crash during commit in one-phase mode
+CLASS org.apache.activemq.transaction.LocalTransaction
+METHOD commit
+AT EXIT
+IF true
+DO traceln("Killing VM during commit"), delay(1000), killJVM()
+ENDRULE
